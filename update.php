@@ -1,6 +1,9 @@
 <?php
 
-$dsn = 'mysql:host=127.0.0.1;dbname=cars_app;charset=utf8mb4';
+$dsn = 
+'mysql:host=localhost;
+dbname=cars_app;
+charset=utf8mb4';
 $dbUser = 'root';
 $dbPass = '';
 $options = [
@@ -67,7 +70,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 $car_id = isset($_GET['car_id']) ? (int)$_GET['car_id'] : 0;
 if (!$car_id) {
-    echo "Missing car_id in query string.";
+
+    echo "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Select car</title></head><body>";
+    echo "<h1>Update car_id</h1>";
+    echo "<p>Please select a car to update from the list below, or enter an ID to continue.</p>";
+
+    try {
+        $stmtList = $pdo->query("SELECT car_id, make, model, year FROM cars ORDER BY car_id DESC LIMIT 50");
+        $carsList = $stmtList->fetchAll();
+    } catch (Exception $e) {
+        $carsList = [];
+    }
+
+    if (!empty($carsList)) {
+        echo "<ul>";
+        foreach ($carsList as $c) {
+            $id = (int)$c['car_id'];
+            $label = htmlspecialchars(($c['make'] ?? '') . ' ' . ($c['model'] ?? '') . ' ' . ($c['year'] ?? ''));
+            echo "<li><a href=\"update.php?car_id={$id}\">#{$id} - {$label}</a></li>";
+        }
+        echo "</ul>";
+    } else {
+        echo "<p>No cars found.</p>";
+    }
+
+    echo "<form method=\"get\" action=\"update.php\">";
+    echo "<label for=\"car_id\">Enter car ID:</label> ";
+    echo "<input id=\"car_id\" name=\"car_id\" type=\"number\" min=\"1\"> ";
+    echo "<button type=\"submit\">Go</button>";
+    echo "</form>";
+
+    echo "<p><a href=\"index.php\">Back to list</a></p>";
+    echo "</body></html>";
     exit;
 }
 

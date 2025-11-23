@@ -65,40 +65,35 @@ copy Car_app C:\xampp\htdocs\
 cp -r Car_app /Applications/XAMPP/htdocs/
 # Create Database
 
-sql
-CREATE DATABASE car_dealership;
-
-USE car_dealership;
-
-CREATE TABLE cars (
-    car_id INT AUTO_INCREMENT PRIMARY KEY,
-    model VARCHAR(255) NOT NULL,
-    used BOOLEAN NOT NULL,
-    sale_date DATE,
-    price DECIMAL(10,2) NOT NULL
-);
-Insert Sample Data
+## sql<br>
+CREATE DATABASE car_dealership;<br>
+CREATE TABLE cars (<br>
+    car_id INT AUTO_INCREMENT PRIMARY KEY,<br>
+    model VARCHAR(255) NOT NULL,<br>
+    used BOOLEAN NOT NULL,<br>
+    sale_date DATE,<br>
+    price DECIMAL(10,2) NOT NULL<br>
+);<br><br>
+# Insert Sample Data
 
 sql:
-INSERT INTO cars (model, used, sale_date, price) VALUES
-('Toyota Camry', 1, '2024-01-15', 15000.00),
-('Honda Civic', 0, '2024-02-20', 22000.00),
-('Ford Mustang', 1, '2024-03-10', 25000.00),
-('BMW X5', 0, '2024-04-05', 45000.00);
-Configure Database Connection
+INSERT INTO cars (model, used, sale_date, price) VALUES<br>
+('Toyota Camry', 1, '2024-01-15', 15000.00),<br>
+('Honda Civic', 0, '2024-02-20', 22000.00),<br>
+('Ford Mustang', 1, '2024-03-10', 25000.00),<br>
+('BMW X5', 0, '2024-04-05', 45000.00);<br><br>
+## Configure Database Connection<br>
 
-php
-// Edit config.php with your database credentials
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "car_dealership";
-💻 Usage
+php<br>
+// Edit config.php with your database credentials<br>
+$host = "localhost";<br>
+$username = "root";<br>
+$password = "";<br>
+$database = "car_dealership";<br>
+# 💻 Usage<br>
 Start the application
-
-bash
-# Open your browser and navigate to:
-http://localhost/Car_app/index.php
+## Open your browser and navigate to:
+http://localhost/Car_app/index.php<br>
 Access different features:
 
 View All Cars: http://localhost/Car_app/index.php

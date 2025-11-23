@@ -1,4 +1,6 @@
 CREATE DATABASE car_dealership;
+
+
 CREATE TABLE cars ( 
 car_id INT AUTO_INCREMENT PRIMARY KEY,
 model VARCHAR(255) NOT NULL,

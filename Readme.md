@@ -14,12 +14,7 @@ A full-featured PHP CRUD (Create, Read, Update, Delete) application for managing
 - [Installation](#installation)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
-- [Security Features](#security-features)
-- [SQL Injection Demo](#sql-injection-demo)
-- [Screenshots](#screenshots)
-- [Technologies Used](#technologies-used)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## ✨ Features
 
@@ -31,17 +26,15 @@ A full-featured PHP CRUD (Create, Read, Update, Delete) application for managing
 - **📊 Data Validation** - Input validation and error handling
 
 ## 📁 Project Structure
-Car_app/
-├── config.php # Database configuration
-├── index.php # List all cars (Read)
-├── create.php # Add new car (Create)
-├── show.php # Show car details (Read)
-├── update.php # Edit car information (Update)
-├── delete.php # Remove car (Delete)
-├── vulnerable_search.php # SQL Injection demonstration
-└── README.md # Project documentation
-
-text
+Car_app/<br>
+├── config.php # Database configuration<br>
+├── index.php # List all cars (Read)<br>
+├── create.php # Add new car (Create)<br>
+├── show.php # Show car details (Read)<br>
+├── update.php # Edit car information (Update)<br>
+├── delete.php # Remove car (Delete)<br>
+├── vulnerable_search.php # SQL Injection demonstration<br>
+└── README.md # Project documentation<br>
 
 ## 🚀 Installation
 
@@ -54,23 +47,23 @@ text
 ### Step-by-Step Setup
 
 1. **Clone the repository**
-   ```bash
+   
    git clone https://github.com/youssef324/Car_app.git
    cd Car_app
 Setup XAMPP
 
-bash
+
 # Download and install XAMPP from https://www.apachefriends.org/
 # Start Apache and MySQL from XAMPP Control Panel
 Move project to htdocs
 
-bash
+
 # Windows
 copy Car_app C:\xampp\htdocs\
 
 # macOS/Linux
 cp -r Car_app /Applications/XAMPP/htdocs/
-Create Database
+# Create Database
 
 sql
 CREATE DATABASE car_dealership;
@@ -86,7 +79,7 @@ CREATE TABLE cars (
 );
 Insert Sample Data
 
-sql
+sql:
 INSERT INTO cars (model, used, sale_date, price) VALUES
 ('Toyota Camry', 1, '2024-01-15', 15000.00),
 ('Honda Civic', 0, '2024-02-20', 22000.00),
@@ -114,50 +107,45 @@ Add New Car: http://localhost/Car_app/create.php
 
 Search Cars: http://localhost/Car_app/vulnerable_search.php
 
-🔗 API Endpoints
-Method	Endpoint	Description
-GET	/index.php	List all cars
-GET	/show.php?car_id=1	Show specific car
-GET/POST	/create.php	Create new car
-GET/POST	/update.php?car_id=1	Update car details
-GET	/delete.php?car_id=1	Delete car
-POST	/vulnerable_search.php	Search cars (vulnerable)
-🛡️ Security Features
+##🔗 API Endpoints
+Method	Endpoint	Description <br>
+GET	/index.php	List all cars<br>
+GET	/show.php?car_id=1	Show specific car<br>
+GET/POST	/create.php	Create new car<br>
+GET/POST	/update.php?car_id=1	Update car details<br>
+GET	/delete.php?car_id=1	Delete car<br>
+POST	/vulnerable_search.php	Search cars (vulnerable)<br>
+## 🛡️ Security Features
 Secure Implementation
-✅ Prepared statements in CRUD operations
-
-✅ Input validation and sanitization
-
-✅ Error handling without information leakage
-
-✅ SQL injection prevention
+ Prepared statements in CRUD operations
+ Input validation and sanitization<br>
+ Error handling without information leakage
+ SQL injection prevention
 
 Vulnerable Implementation
-❌ Direct string concatenation in SQL queries
+ Direct string concatenation in SQL queries<br>
+ No input sanitization in search functionality
+ Demonstrates real-world security risks
 
-❌ No input sanitization in search functionality
-
-❌ Demonstrates real-world security risks
-
-🎯 SQL Injection Demo
+## 🎯 SQL Injection Demo
 Vulnerable Endpoint
 File: vulnerable_search.php
 
-Example Attacks:
+Example Attacks:<br>
 Show All Cars
 
 sql
-Input: ' OR '1'='1
+Input:<br> ' OR '1'='1
 Query: SELECT * FROM cars WHERE model = '' OR '1'='1'
 Bypass Authentication
 
 sql
-Input: ' OR 1=1 -- 
+Input:<br> ' OR 1=1 -- 
 Query: SELECT * FROM cars WHERE model = '' OR 1=1 -- '
 Database Information
 
 sql
-Input: ' UNION SELECT 1,database(),user(),version(),5 -- 
+Input: <br>' UNION SELECT 1,database(),user(),version(),5 -- <br><br>
 How to Test:
 Navigate to http://localhost/Car_app/vulnerable_search.php
 
@@ -165,37 +153,3 @@ Enter the SQL injection payloads in the search box
 
 Observe how the application behavior changes
 
-📸 Screenshots
-Main Dashboard
-https://via.placeholder.com/800x400/4A90E2/FFFFFF?text=Car+Dealership+Dashboard
-
-SQL Injection Demo
-https://via.placeholder.com/800x400/E74C3C/FFFFFF?text=SQL+Injection+Demo
-
-Add New Car
-https://via.placeholder.com/800x400/27AE60/FFFFFF?text=Add+New+Car+Form
-
-🛠️ Technologies Used
-Backend: PHP 8.0+
-
-Database: MySQL/MariaDB
-
-Server: Apache HTTP Server
-
-Frontend: HTML5, CSS3, JavaScript
-
-Security: Prepared Statements, Input Validation
-
-🤝 Contributing
-We welcome contributions! Please feel free to submit pull requests or open issues for bugs and feature requests.
-
-Contribution Steps:
-Fork the repository
-
-Create a feature branch (git checkout -b feature/AmazingFeature)
-
-Commit your changes (git commit -m 'Add some AmazingFeature')
-
-Push to the branch (git push origin feature/AmazingFeature)
-
-Open a Pull Request

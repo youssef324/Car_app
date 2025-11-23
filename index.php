@@ -19,8 +19,7 @@ try {
 
     $stmt = $pdo->query('SELECT * FROM cars');
     $rows = $stmt->fetchAll(); 
-
-    // Decide output format: ?format=json or Accept: application/json
+    
     $wantJson = false;
     if (isset($_GET['format']) && strtolower($_GET['format']) === 'json') {
         $wantJson = true;

@@ -38,7 +38,7 @@ if (isset($_POST['model'])) {
         if ($conn->connect_error) {
             echo "Connection failed: " . $conn->connect_error;
         } else {
-            // VULNERABLE CODE: Directly concatenating user input into SQL query
+    
             $sql = "SELECT * FROM cars WHERE model = '$model'";
             
             echo "<div class='success'>Executing query: " . htmlspecialchars($sql) . "</div><br>";

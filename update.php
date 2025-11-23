@@ -63,7 +63,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: update.php?car_id=' . $car_id . '&updated=1');
         exit;
     }
-    // If errors, fall through to re-display form with $errors and previously submitted values.
 }
 
 $car_id = isset($_GET['car_id']) ? (int)$_GET['car_id'] : 0;

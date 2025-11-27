@@ -102,7 +102,7 @@ Add New Car: http://localhost/Car_app/create.php
 
 Search Cars: http://localhost/Car_app/vulnerable_search.php
 
-##🔗 API Endpoints
+## 🔗 API Endpoints
 Method	Endpoint	Description <br>
 GET	/index.php	List all cars<br>
 GET	/show.php?car_id=1	Show specific car<br>
